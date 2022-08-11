@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:homerental/signin.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -55,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
       color: Colors.deepOrange,
 
       child: MaterialButton(onPressed: (){},
-      child: Text("Login",style:TextStyle(fontWeight:FontWeight.bold,),),),
+      child: const Text("Login",style:TextStyle(fontWeight:FontWeight.bold,),),),
     );
     return Scaffold(
       backgroundColor:Colors.white ,
@@ -69,12 +70,24 @@ class _LoginScreenState extends State<LoginScreen> {
                  key:_formKey ,
                child: Column(
                  children: <Widget>[
-
                    emailField,
                    SizedBox(height: 8,width: 6,),
                    passwordfiled,
                    SizedBox(height: 8,width: 6,),
-                   loginbutton
+                   loginbutton,
+                   SizedBox(height: 10,width: 9,),
+                   Row(mainAxisAlignment: MainAxisAlignment.center,
+                     children:<Widget> [
+                       Text("Don't have an account"),
+                       GestureDetector(
+                         onTap: (){
+                           Navigator.push(context,
+                               MaterialPageRoute(builder:(context)=>Signup()));
+                         },
+                         child: Text("signup"),
+                       )
+                     ],
+                   )
                  ],
                ),
 
