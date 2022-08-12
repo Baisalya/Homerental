@@ -65,11 +65,15 @@ class _LoginScreenState extends State<LoginScreen> {
            child: Padding(
              padding: const EdgeInsets.all(10.0),
              child: Container(
+
                color: Colors.white,
                child: Form(
                  key:_formKey ,
                child: Column(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 crossAxisAlignment:CrossAxisAlignment.center,
                  children: <Widget>[
+                 SizedBox(height: 200,child: Image(image: AssetImage('Assets/home.jpg'),),),
                    emailField,
                    SizedBox(height: 8,width: 6,),
                    passwordfiled,
@@ -84,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                            Navigator.push(context,
                                MaterialPageRoute(builder:(context)=>Signup()));
                          },
-                         child: Text("signup"),
+                         child: Text(" signup",style: TextStyle(color:Colors.orange,fontWeight: FontWeight.bold),),
                        )
                      ],
                    )
