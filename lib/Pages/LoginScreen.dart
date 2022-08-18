@@ -6,8 +6,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:homerental/Route/HomePage.dart';
-import 'package:homerental/signin.dart';
+import 'package:homerental/Pages/HomePage.dart';
+import 'package:homerental/Pages/signin.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -141,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-  //login vali
+  //login validate
 void login(String email,String password)async{
     if(_formKey.currentState!.validate()){
       await auth.signInWithEmailAndPassword(email: email, password: password).
