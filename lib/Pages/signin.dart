@@ -139,7 +139,7 @@ class _SignupState extends State<Signup> {
       controller: confirmPasswordEditingController,
       //keyboardType: TextInputType.visiblePassword,
       validator:(value){
-        if(PasswordEditingController.text != PasswordEditingController.text){
+        if(confirmPasswordEditingController.text != PasswordEditingController.text){
           return "Password not matching";
         }
         return null;
