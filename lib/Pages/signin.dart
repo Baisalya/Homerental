@@ -179,11 +179,11 @@ class _SignupState extends State<Signup> {
         decoration: const BoxDecoration(
         gradient:LinearGradient(
         colors: [
-        Colors.deepPurpleAccent,
-        Colors.indigoAccent,
+        Colors.orange,
+        Colors.deepOrangeAccent,
       //  Colors.blueGrey,
-        Colors.indigoAccent,
-        Colors.teal],
+        Colors.orangeAccent,
+        Colors.deepOrange],
         begin:Alignment.bottomCenter,
         end:Alignment.topRight
     ),
@@ -212,7 +212,7 @@ class _SignupState extends State<Signup> {
                     confirmpasswordfield,
                     SizedBox(height: 8,width: 6,),
                     Signup,
-                    SizedBox(height: 10,),
+                    SizedBox(height: 20,),
                     Row(mainAxisAlignment: MainAxisAlignment.center,
                       children:<Widget> [
                         Text("Already have an account"),
@@ -222,7 +222,7 @@ class _SignupState extends State<Signup> {
                                 MaterialPageRoute(builder:(context)=>LoginScreen()));
                           },
 
-                          child: Text(" click here",style:TextStyle(color:Colors.orange,fontWeight:FontWeight.bold),),
+                          child: Text(" click here",style:TextStyle(color:Colors.white,fontWeight:FontWeight.bold),),
                         )
                       ],
                     )
