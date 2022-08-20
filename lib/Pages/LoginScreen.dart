@@ -1,5 +1,8 @@
-//import 'dart:html';
+
 //import 'dart:math';
+
+
+import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,7 +21,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool Ishidepassword=true;
   final _formKey=GlobalKey<FormState>();
+
   //controlller
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController=new TextEditingController();
@@ -27,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     //EMAIL
     final emailField =TextFormField(
       autofocus: false,
@@ -52,14 +58,13 @@ class _LoginScreenState extends State<LoginScreen> {
             borderRadius:BorderRadius.circular(10))
       ),
     );
-
-    
     //password
     final passwordfiled=TextFormField(
       autofocus: false,
       controller: passwordController,
      //    keyboardType: TextInputType.visiblePassword,
-      obscureText:true,
+      obscureText:Ishidepassword,
+
       validator:(value){
         /** r'^
             (?=.*[A-Z])       // should contain at least one upper case
@@ -68,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
             (?=.*?[!@#\$&*~]) // should contain at least one Special character
             .{8,}             // Must be at least 8 characters in length
             $ **/
-        RegExp regExp=new RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+        RegExp regExp=new RegExp(r'^{8,}$');
         if(value!.isEmpty){
           return ("password is required for login");
         }
@@ -84,6 +89,15 @@ class _LoginScreenState extends State<LoginScreen> {
           prefixIcon: Icon(Icons.password),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
           hintText: "Enter your Password",
+          suffixIcon: IconButton(
+            onPressed:_tooglepasswordview,
+            icon:Ishidepassword ? Icon(Icons.visibility_off_sharp) : Icon(Icons.visibility),
+/**
+ * here Ishidepassword bool is used for visible or pass or not
+ * tooglepassword function used for state change password visible or not
+ *
+ * **/
+          ),
           border: OutlineInputBorder(
               borderRadius:BorderRadius.circular(10))
       ),
@@ -95,8 +109,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
       child: MaterialButton(onPressed: (){
         login(emailController.text, passwordController.text);
+
       },
       child: const Text("Login",style:TextStyle(fontWeight:FontWeight.bold,),),),
+    );
+    final forgetpassword=InkWell(
+      onTap:(){
+        resetpass(emailController.text);
+      },
+      child:Text("Forgot Password",style:TextStyle(color:Colors.deepOrangeAccent,fontSize:20),),
+
     );
     return Scaffold(
       backgroundColor:Colors.white ,
@@ -117,9 +139,17 @@ class _LoginScreenState extends State<LoginScreen> {
                    emailField,
                    SizedBox(height: 8,width: 6,),
                    passwordfiled,
-                   SizedBox(height: 8,width: 6,),
+                   SizedBox(height: 15,width: 6,),
                    loginbutton,
-                   SizedBox(height: 10,width: 9,),
+                   SizedBox(height: 20,width: 6,),
+                   forgetpassword,
+                   SizedBox(height:15 ,),
+                   const Padding(padding:EdgeInsets.only(left:30,right:30,top:5 ),
+                   child:  Divider(
+                     thickness:2,
+                   ),
+                   ),
+
                    Row(mainAxisAlignment: MainAxisAlignment.center,
                      children:<Widget> [
                        Text("Don't have an account"),
@@ -155,5 +185,21 @@ void login(String email,String password)async{
           });
 
     }
+}
+  void _tooglepasswordview() {//is hide boolean used
+    Ishidepassword = !Ishidepassword;
+    if(Ishidepassword==true){
+      Ishidepassword==false;
+    }else{Ishidepassword==true;}
+    setState(() { });}
+void resetpass(String email) async{
+    if(emailController.text.isEmpty){
+      Fluttertoast.showToast(msg: "Enter a EmailId");
+    }if(_formKey.currentState!.validate()){
+      FirebaseAuth.instance.sendPasswordResetEmail(email:email);
+      Fluttertoast.showToast(msg: "reset mail sent Successfully");
+    }
+
+
 }
 }
