@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../widgets/drawer.dart';
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -10,11 +12,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Home Rental"),
+      appBar: AppBar(title: Center(child: Text("Home Rental")),
       ),
-      drawer: Drawer(
-        child: ListView(),
-      ),
+      drawer: MyDrawer(),
+
     );
   }
 }
