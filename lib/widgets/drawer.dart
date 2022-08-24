@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:homerental/Pages/HomePage.dart';
 import 'package:homerental/model/user_model.dart';
 
+import '../Admin/Adminreg.dart';
 import '../Pages/LoginScreen.dart';
 //import 'package:flight_ticket/login_page.dart';
 
@@ -116,7 +117,8 @@ Widget builddraw(){
                 children: <Widget>[
                   const Text("Are You House owner",style:TextStyle(fontSize:20,fontWeight:FontWeight.bold),),
                   ListTile(leading:const Icon(Icons.home_work_outlined),
-                    title:const Text("Give your House Detail"),onTap: (){},
+                    title:const Text("Give your House Detail"),onTap: (){Navigator.push(context,
+                        MaterialPageRoute(builder:(context)=>AdminReg()));},
                   ),
                 ],
               ),

@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
             (?=.*?[!@#\$&*~]) // should contain at least one Special character
             .{8,}             // Must be at least 8 characters in length
             $ **/
-        RegExp regExp=new RegExp(r'^{8,}$');
+        RegExp regExp=new RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
         if(value!.isEmpty){
           return ("password is required for login");
         }
@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
     final forgetpassword=InkWell(
       onTap:(){
-        resetpass(emailController.text);
+      //  resetpass(emailController.text);
       },
       child:Text("Forgot Password",style:TextStyle(color:Colors.deepOrangeAccent,fontSize:20),),
 
@@ -182,6 +182,7 @@ void login(String email,String password)async{
       }).catchError((e)
       {
         Fluttertoast.showToast(msg: e!.message);
+
           });
 
     }
