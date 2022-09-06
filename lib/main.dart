@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:homerental/Pages/HomePage.dart';
 import 'package:homerental/Pages/LoginScreen.dart';
 import 'package:homerental/Pages/signin.dart';
+import 'package:homerental/utility/route.dart';
 // here added asy firebase for not exception erroe
 Future<void> main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +29,12 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
                 primarySwatch: Colors.blue,
       ),
-      home:LoginScreen(),
+      routes:{
+        "/":(context)=>LoginScreen(),
+        Myroutes.signupRoute:(context)=>Signup(),
+        Myroutes.homeRoute:(context)=>HomePage()
+      } ,
+     // home:LoginScreen(),
       //const MyHomePage(title: 'Home'),
     );
   }

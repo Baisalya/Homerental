@@ -1,14 +1,13 @@
 
-
 import 'dart:ui';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:homerental/Pages/HomePage.dart';
 import 'package:homerental/model/user_model.dart';
-
+import 'package:homerental/utility/route.dart';
+import 'package:homerental/utility/route.dart';
 import '../Admin/Adminreg.dart';
 import '../Pages/LoginScreen.dart';
 //import 'package:flight_ticket/login_page.dart';
@@ -86,53 +85,55 @@ Widget builddraw(){
     final  image="Assets/image/drawer.jpg";
     return Drawer(
       //child: Container(
-        child: Center(
-          child: Column(
-            //mainAxisAlignment: MainAxisSize.max,
-            children: <Widget>[
-              builddraw(),
-              const ListTile(
-                leading: const Icon(CupertinoIcons.home,color:Colors.blue,),title: const Text("HoME"),
-              //  onTap: (){Navigator.pushNamed(context,Myroutes.homeRoute);},
-              ),
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              //mainAxisAlignment: MainAxisSize.max,
+              children: <Widget>[
+                builddraw(),
+                 ListTile(
+                  leading: const Icon(CupertinoIcons.home,color:Colors.blue,),title: const Text("HoME"),
+                 onTap: (){Navigator.pushNamed(context,Myroutes.homeRoute);},
+                ),
 
-              ListTile(
-                  leading:const Icon(CupertinoIcons.profile_circled,color:Colors.blue),title:const Text("PrOFILE"),onTap: (){}),
+                ListTile(
+                    leading:const Icon(CupertinoIcons.profile_circled,color:Colors.blue),title:const Text("PrOFILE"),onTap: (){}),
 
-              const ListTile(
-                  leading:Icon(CupertinoIcons.bed_double_fill,color:Colors.blue),title:Text("Your Room"),
-                //  onTap: (){Navigator.pushNamed(context, Myroutes.ticketpage);}
-              ),
+                const ListTile(
+                    leading:Icon(CupertinoIcons.bed_double_fill,color:Colors.blue),title:Text("Your Room"),
+                  //  onTap: (){Navigator.pushNamed(context, Myroutes.ticketpage);}
+                ),
 
-              ListTile(
-                  leading:const Icon(CupertinoIcons.circle_grid_hex,color:Colors.blue),title:const Text("SETTING"),onTap: (){}),
-              ListTile(
-                  leading:const Icon(Icons.help_outline,color:Colors.blue),title:const Text("Need Help"),onTap: (){}),
-              const ListTile(
-                leading:Icon(Icons.money,color:Colors.blue),title:Text("Your Wallet"),
-                //  onTap: (){Navigator.pushNamed(context, Myroutes.paymentpage);}
-              ),
-              const Divider(),
-              Column(
-                children: <Widget>[
-                  const Text("Are You House owner",style:TextStyle(fontSize:20,fontWeight:FontWeight.bold),),
-                  ListTile(leading:const Icon(Icons.home_work_outlined),
-                    title:const Text("Give your House Detail"),onTap: (){Navigator.push(context,
-                        MaterialPageRoute(builder:(context)=>AdminReg()));},
+                ListTile(
+                    leading:const Icon(CupertinoIcons.circle_grid_hex,color:Colors.blue),title:const Text("SETTING"),onTap: (){}),
+                ListTile(
+                    leading:const Icon(Icons.help_outline,color:Colors.blue),title:const Text("Need Help"),onTap: (){}),
+                const ListTile(
+                  leading:Icon(Icons.money,color:Colors.blue),title:Text("Your Wallet"),
+                  //  onTap: (){Navigator.pushNamed(context, Myroutes.paymentpage);}
+                ),
+                const Divider(),
+                Column(
+                  children: <Widget>[
+                    const Text("Are You House owner",style:TextStyle(fontSize:20,fontWeight:FontWeight.bold),),
+                    ListTile(leading:const Icon(Icons.home_work_outlined),
+                      title:const Text("Give your House Detail"),onTap: (){Navigator.push(context,
+                          MaterialPageRoute(builder:(context)=>AdminReg()));},
+                    ),
+                  ],
+                ),
+
+                Expanded(child: Align(alignment: Alignment.bottomLeft,
+                  child: ListTile(
+                      leading:const Icon(Icons.logout,color:Colors.blue),title:const Text("Logout"),onTap: (){logout(context);},
+
                   ),
-                ],
-              ),
-
-              Expanded(child: Align(alignment: Alignment.bottomLeft,
-                child: ListTile(
-                    leading:const Icon(Icons.logout,color:Colors.blue),title:const Text("Logout"),onTap: (){logout(context);},
-
-                ),
-              )),
-            ],
+                )),
+              ],
 
 
-                ),
+                  ),
+          ),
         ),
 
           );
