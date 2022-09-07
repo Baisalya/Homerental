@@ -84,8 +84,8 @@ Widget builddraw(){
   Widget build(BuildContext context) {
     final  image="Assets/image/drawer.jpg";
     return Drawer(
-      //child: Container(
-        child: SingleChildScrollView(
+      child: Container(
+       // child: SingleChildScrollView(
           child: Center(
             child: Column(
               //mainAxisAlignment: MainAxisSize.max,
@@ -97,7 +97,8 @@ Widget builddraw(){
                 ),
 
                 ListTile(
-                    leading:const Icon(CupertinoIcons.profile_circled,color:Colors.blue),title:const Text("PrOFILE"),onTap: (){}),
+                    leading:const Icon(CupertinoIcons.profile_circled,color:Colors.blue),title:const Text("PrOFILE"),
+                    onTap: (){Navigator.pushNamed(context, Myroutes.userprofileRoute);}),
 
                 const ListTile(
                     leading:Icon(CupertinoIcons.bed_double_fill,color:Colors.blue),title:Text("Your Room"),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:homerental/Pages/HomePage.dart';
 import 'package:homerental/Pages/LoginScreen.dart';
 import 'package:homerental/Pages/signin.dart';
+import 'package:homerental/Pages/userprofile/Profile.dart';
 import 'package:homerental/utility/route.dart';
 // here added asy firebase for not exception erroe
 Future<void> main()async {
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
       routes:{
         "/":(context)=>LoginScreen(),
         Myroutes.signupRoute:(context)=>Signup(),
-        Myroutes.homeRoute:(context)=>HomePage()
+        Myroutes.homeRoute:(context)=>HomePage(),
+        Myroutes.userprofileRoute:(context)=>UserProfile(),
       } ,
      // home:LoginScreen(),
       //const MyHomePage(title: 'Home'),
