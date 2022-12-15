@@ -4,11 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:homerental/Admin/Adminreg.dart';
 import 'package:homerental/Pages/HomePage.dart';
 import 'package:homerental/model/user_model.dart';
 import 'package:homerental/utility/route.dart';
 import 'package:homerental/utility/route.dart';
-import '../Admin/Adminreg.dart';
+
 import '../Pages/LoginScreen.dart';
 //import 'package:flight_ticket/login_page.dart';
 

@@ -39,6 +39,9 @@ dependencies:
   font_awesome_flutter:
   timeago:
   http:
+  provider:
+  shared_preferences:
+  smooth_page_indicator:
 
   fluttertoast: ^8.0.9
   cloud_firestore: ^3.4.4

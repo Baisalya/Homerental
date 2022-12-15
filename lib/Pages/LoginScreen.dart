@@ -175,7 +175,7 @@ void login(String email,String password)async{
       await auth.signInWithEmailAndPassword(email: email, password: password).
       then((uid) => {
         Fluttertoast.showToast(msg: "login Successfully"),
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>HomePage())),
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const HomePage())),
       }).catchError((e)
       {
         Fluttertoast.showToast(msg: e!.message);
