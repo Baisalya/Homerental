@@ -6,7 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:homerental/Pages/HomePage.dart';
+import 'package:homerental/widgets/MainPage.dart';
+import '../Pages/HomePage.dart';
 import 'package:homerental/Pages/signin.dart';
 
 
@@ -175,7 +176,7 @@ void login(String email,String password)async{
       await auth.signInWithEmailAndPassword(email: email, password: password).
       then((uid) => {
         Fluttertoast.showToast(msg: "login Successfully"),
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const HomePage())),
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const NavbarItemPage())),
       }).catchError((e)
       {
         Fluttertoast.showToast(msg: e!.message);

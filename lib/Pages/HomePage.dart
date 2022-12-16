@@ -3,11 +3,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:homerental/widgets/drawer.dart';
 
-import '../widgets/Navbar_item.dart';
-import '../widgets/SearchPage.dart';
-import '../widgets/drawer.dart';
-import '../widgets/myPage.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -15,43 +14,78 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  List pages=[
-    //HomePage(),
-    Navbar_Items(),
-    SearchPage(),
-    MyPage()
-  ];
-  int navitem=0;
-  void onTap(int index){
-    setState(() {
-      navitem=index;
-    });
+class _HomePageState extends State<HomePage>with TickerProviderStateMixin {
 
-  }
   @override
   Widget build(BuildContext context) {
+    TabController _tabController=TabController(length: 3,vsync:this );
     return Scaffold(
-      backgroundColor: Colors.white,
+/*        appBar: AppBar(
+          elevation:0,
+          backgroundColor:Colors.white,
+          title: const Center(
+              child:Text("")),
 
-      body: pages[navitem],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap:onTap,
-        currentIndex:navitem,
-        type:BottomNavigationBarType.fixed,
-        backgroundColor: Colors.blueAccent.withOpacity(0.9),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        showSelectedLabels:false,
-        showUnselectedLabels: false,
-        elevation:0,
-        items: [
-          BottomNavigationBarItem(label:"home",icon:Icon(Icons.home_rounded),),
-          //BottomNavigationBarItem(label:"Bar",icon:Icon(Icons.bar_chart)),
-          BottomNavigationBarItem(label:"Search",icon:Icon(Icons.search_sharp)),
-          BottomNavigationBarItem(label:"Profile",icon:Icon(Icons.person_outlined)),
-        ],),
+        ),
 
+        drawer: MyDrawer()*/
+    body:Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.only(top: 60,left: 10),
+          child:Row(
+            children: [
+              Icon(Icons.menu_rounded,color:Colors.black,),
+              Expanded(child: Container(),),
+              Container(
+                margin: const EdgeInsets.only(right: 10),
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  borderRadius:BorderRadius.circular(10),
+                  color:Colors.grey.withOpacity(0.5)
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 40,),
+        /**Discover Text **/
+        Container(
+          margin: const EdgeInsets.only(left:20),
+            child: Text("Discover",style: GoogleFonts.recursive(fontSize: 25,fontWeight:FontWeight.bold,letterSpacing:1),)
+        ),
+        const SizedBox(height: 40,),
+        /**Tab bar **/
+        Container(
+          child: TabBar(
+            labelColor:Colors.black,
+            isScrollable:true,
+            unselectedLabelColor:Colors.grey,
+            controller: _tabController,
+            tabs: [
+            Tab(text: "places",),
+            Tab(text: "places",),
+            Tab(text: "places",),
+          ],),
+        ),
+        /**Tabbar View **/
+        Container(
+          height: 300,
+          width: double.maxFinite,//available width given
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              Text("Aul"),
+              Text("data"),
+              Text("data"),
+            ],
+          ),
+        )
+      ],
+    ),
     );
+
   }
 }

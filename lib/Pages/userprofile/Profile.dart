@@ -48,6 +48,7 @@ class _UserProfileState extends State<UserProfile> {
         ),
       ),
     );
+
     return Scaffold(
       appBar:AppBar(
         backgroundColor:Colors.transparent,

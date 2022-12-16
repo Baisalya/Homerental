@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:homerental/Pages/HomePage.dart';
+import '../Pages/HomePage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../model/user_model.dart';
 import 'LoginScreen.dart';

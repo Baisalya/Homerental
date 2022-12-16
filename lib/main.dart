@@ -5,6 +5,7 @@ import 'package:homerental/Pages/LoginScreen.dart';
 import 'package:homerental/Pages/signin.dart';
 import 'package:homerental/Pages/userprofile/Profile.dart';
 import 'package:homerental/utility/route.dart';
+import 'package:homerental/widgets/MainPage.dart';
 // here added asy firebase for not exception erroe
 Future<void> main()async {
   WidgetsFlutterBinding.ensureInitialized();
