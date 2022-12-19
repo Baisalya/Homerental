@@ -1,5 +1,4 @@
 
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -56,19 +55,25 @@ class _HomePageState extends State<HomePage>with TickerProviderStateMixin {
           margin: const EdgeInsets.only(left:20),
             child: Text("Discover",style: GoogleFonts.recursive(fontSize: 25,fontWeight:FontWeight.bold,letterSpacing:1),)
         ),
-        const SizedBox(height: 40,),
+        const SizedBox(height: 25,),
         /**Tab bar **/
         Container(
-          child: TabBar(
-            labelColor:Colors.black,
-            isScrollable:true,
-            unselectedLabelColor:Colors.grey,
-            controller: _tabController,
-            tabs: [
-            Tab(text: "places",),
-            Tab(text: "places",),
-            Tab(text: "places",),
-          ],),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: TabBar(
+              labelPadding: const EdgeInsets.only(left: 25,right: 25),
+              labelColor:Colors.black,
+              isScrollable:true,
+              unselectedLabelColor:Colors.grey,
+              controller: _tabController,
+             indicatorSize: TabBarIndicatorSize.label,
+              indicator:CircleTabIndicator(color: Colors.blueAccent, radius: 4),
+              tabs: [
+              Tab(text: "places",),
+              Tab(text: "places",),
+              Tab(text: "places",),
+            ],),
+          ),
         ),
         /**Tabbar View **/
         Container(
@@ -88,4 +93,32 @@ class _HomePageState extends State<HomePage>with TickerProviderStateMixin {
     );
 
   }
+}
+
+class CircleTabIndicator extends Decoration{
+  final Color color;
+  double radius;
+  CircleTabIndicator({required this.color,required this.radius});
+  @override
+  BoxPainter createBoxPainter([VoidCallback ?onChanged]) {
+    // TODO: implement createBoxPainter
+    return _Circlepainter(color:color,radius:radius);
+  }
+
+}
+class _Circlepainter extends BoxPainter{
+  final Color color;
+  double radius;
+  _Circlepainter({required this.color,required this.radius});
+  @override
+  void paint(Canvas canvas, Offset offset,
+      ImageConfiguration configuration) {
+    Paint _paint=Paint();
+    _paint.color=color;
+    _paint.isAntiAlias=true;
+    final Offset circleoffset=Offset(configuration.size!.width/2 -radius/2,configuration.size!.height-1);//its for middle
+    canvas.drawCircle(offset+circleoffset, radius, _paint);
+    // TODO: implement paint
+  }
+
 }

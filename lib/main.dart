@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:homerental/Pages/HomePage.dart';
@@ -62,7 +65,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+/*late StreamSubscription<User?> user;
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    user=FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user==null) {
+        LoginScreen();
+      }  else{
+        HomePage();
+      }
+    });
+  }*/
 
   @override
   Widget build(BuildContext context) {
