@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage>with TickerProviderStateMixin {
                   borderRadius:BorderRadius.circular(10),
                   color:Colors.grey.withOpacity(0.5)
                 ),
+                
               ),
             ],
           ),
@@ -69,9 +70,9 @@ class _HomePageState extends State<HomePage>with TickerProviderStateMixin {
              indicatorSize: TabBarIndicatorSize.label,
               indicator:CircleTabIndicator(color: Colors.blueAccent, radius: 4),
               tabs: [
-              Tab(text: "places",),
-              Tab(text: "places",),
-              Tab(text: "places",),
+              Tab(text: "To-let",),
+              Tab(text: "Hotel",),
+              Tab(text: "Hostel",),
             ],),
           ),
         ),
@@ -82,7 +83,27 @@ class _HomePageState extends State<HomePage>with TickerProviderStateMixin {
           child: TabBarView(
             controller: _tabController,
             children: [
-              Text("Aul"),
+              ListView.builder(
+                itemCount:3,
+                scrollDirection:Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) {
+                  //container box
+                  return  Container(
+                    margin: const EdgeInsets.only(right: 10,top: 10,left:5),
+                    width:200,
+                    height: 300,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color:Colors.white,
+                        image: DecorationImage(
+                            image: AssetImage("Assets/homebg.jpeg"),
+                            fit:BoxFit.cover
+                        )
+                    ),
+                  );
+                },
+
+              ),
               Text("data"),
               Text("data"),
             ],

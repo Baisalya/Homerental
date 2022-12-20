@@ -133,7 +133,10 @@ class _LoginScreenState extends State<LoginScreen> {
                  mainAxisAlignment: MainAxisAlignment.center,
                  crossAxisAlignment:CrossAxisAlignment.center,
                  children: <Widget>[
-                 SizedBox(height: 200,child: Image(image: AssetImage('Assets/home.jpg'),),),
+                 SizedBox(height: 200,
+                   child: Image.asset('Assets/home.jpg',fit: BoxFit.cover),
+                   //Image(image: AssetImage('Assets/home.jpg'),),
+                 ),
                    emailField,
                    SizedBox(height: 8,width: 6,),
                    passwordfiled,
